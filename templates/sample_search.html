@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCI2rrQ6FeYu6JvfehofKYLLKxkDxem78o"></script>
+    <script type="text/javascript">
+        function GetLocation() {
+            var geocoder = new google.maps.Geocoder();
+            var address = document.getElementById("txtPostalCode").value;
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+                    document.getElementById("txtLatitude").value = latitude;
+                    document.getElementById("txtLongitude").value = longitude;
+                } else {
+                    alert("Request failed.")
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <input name="txtPostalCode" type="text" value="400093" id="txtPostalCode" />
+                </td>
+                <td>
+                    <input type="submit" name="Button1" value="Get Latitude Longitude" onclick="GetLocation(); return false;"
+                        id="Button1" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input name="txtLatitude" type="text" id="txtLatitude" />
+                </td>
+                <td>
+                    <input name="txtLongitude" type="text" id="txtLongitude" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>
