@@ -1,6 +1,5 @@
 # FindYourDonor
-A Flask-web app to make finding the donors easy
-
+A Flask-web app that makes the process of finding the donor easy and efficient.
 Technology Stack    
 
 Front-end: HTML, CSS, JavaScript, Bootstrap
